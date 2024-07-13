@@ -1,4 +1,4 @@
-// mod.ts
+import { serveFile } from "https://deno.land/std@0.106.0/http/file_server.ts";
 
 addEventListener("fetch", (event) => {
   event.respondWith(handleRequest(event.request));
@@ -9,13 +9,17 @@ async function handleRequest(request: Request): Promise<Response> {
 
   if (url.pathname === "/") {
     // Serve the HTML content
-    const htmlResponse = await fetch("https://yourdomain.com/choose-license.html");
-    return new Response(htmlResponse.body, {
-      status: htmlResponse.status,
+    const html = await Deno.readTextFile("choose-license.html");
+    return new Response(html, {
+      status: 200,
       headers: {
         "content-type": "text/html; charset=UTF-8",
       },
     });
+  } else if (url.pathname.startsWith("/bootstrap/")) {
+    // Serve Bootstrap files
+    const filePath = `.${url.pathname}`;
+    return await serveFile(request, filePath);
   } else if (url.pathname === "/api/select-answer") {
     // Handle user's answer
     const params = url.searchParams;

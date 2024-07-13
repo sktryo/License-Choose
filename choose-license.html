@@ -1,11 +1,10 @@
-<!-- choose-license.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Choose License Website</title>
+  <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -29,16 +28,6 @@
       font-size: 16px;
       cursor: pointer;
     }
-    .btn-yes {
-      background-color: #5cb85c;
-      color: #fff;
-      border: none;
-    }
-    .btn-no {
-      background-color: #d9534f;
-      color: #fff;
-      border: none;
-    }
   </style>
 </head>
 <body>
@@ -46,26 +35,27 @@
   <div class="question">
     <h2>Allow commercial use?</h2>
     <div class="btn-container">
-      <button class="btn btn-yes" onclick="selectAnswer('commercial', 'yes')">Yes</button>
-      <button class="btn btn-no" onclick="selectAnswer('commercial', 'no')">No</button>
+      <button class="btn btn-success" onclick="selectAnswer('commercial', 'yes')">Yes</button>
+      <button class="btn btn-danger" onclick="selectAnswer('commercial', 'no')">No</button>
     </div>
   </div>
   <div class="question">
     <h2>Allow modifications?</h2>
     <div class="btn-container">
-      <button class="btn btn-yes" onclick="selectAnswer('modifications', 'yes')">Yes</button>
-      <button class="btn btn-no" onclick="selectAnswer('modifications', 'no')">No</button>
+      <button class="btn btn-success" onclick="selectAnswer('modifications', 'yes')">Yes</button>
+      <button class="btn btn-danger" onclick="selectAnswer('modifications', 'no')">No</button>
     </div>
   </div>
   <div class="question">
     <h2>Require attribution?</h2>
     <div class="btn-container">
-      <button class="btn btn-yes" onclick="selectAnswer('attribution', 'yes')">Yes</button>
-      <button class="btn btn-no" onclick="selectAnswer('attribution', 'no')">No</button>
+      <button class="btn btn-success" onclick="selectAnswer('attribution', 'yes')">Yes</button>
+      <button class="btn btn-danger" onclick="selectAnswer('attribution', 'no')">No</button>
     </div>
   </div>
 
   <!-- JavaScript to handle user selections -->
+  <script src="/bootstrap/bootstrap.bundle.min.js"></script>
   <script>
     async function selectAnswer(question, answer) {
       // Send answer to backend API
